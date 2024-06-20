@@ -1,0 +1,10 @@
+server:
+  port: 8080
+spring:
+  cloud:
+    azure:
+      cosmos:
+        database: predictiondb
+        populate-query-metrics: true
+        endpoint: https://dropout-students-db.documents.azure.com:443/
+        key: PAk8CicqtMJsMiefXbq0vJqc3yh7hq77Hr19B7aAd8eBEWo2npcNtyWdsdZi4ZAjJgNwDerZpVdHACDbgW11aw==
