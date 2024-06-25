@@ -34,8 +34,9 @@ public class Prediction {
     private double curricularUnits2ndSemGrade;
     private int curricularUnits2ndWithoutEvaluations;
     private double gdp;
+    private double predictRisk;
 
-    public Prediction(int maritalStatus, int applicationMode, int applicationOrder, int daytimeAttendance, int previousQualification, int mothersQualification, int mothersOccupation, int fathersOccupation, int displaced, int debtor, int tuition, int gender, int scholarshipHolder, int ageAtEnrollment, int curricularUnits1stSemEvaluations, double curricularUnits1stSemGrade, int curricularUnits1stSemWithoutEvaluations, int curricularUnits2ndSemCredited, int curricularUnits2ndSemEnrolled, int curricularUnits2ndSemEvaluations, int curricularUnits2ndSemApproved, double curricularUnits2ndSemGrade, int curricularUnits2ndWithoutEvaluations, double gdp) {
+    public Prediction(int maritalStatus, int applicationMode, int applicationOrder, int daytimeAttendance, int previousQualification, int mothersQualification, int mothersOccupation, int fathersOccupation, int displaced, int debtor, int tuition, int gender, int scholarshipHolder, int ageAtEnrollment, int curricularUnits1stSemEvaluations, double curricularUnits1stSemGrade, int curricularUnits1stSemWithoutEvaluations, int curricularUnits2ndSemCredited, int curricularUnits2ndSemEnrolled, int curricularUnits2ndSemEvaluations, int curricularUnits2ndSemApproved, double curricularUnits2ndSemGrade, int curricularUnits2ndWithoutEvaluations, double gdp, double predictRisk) {
         this.maritalStatus = maritalStatus;
         this.applicationMode = applicationMode;
         this.applicationOrder = applicationOrder;
@@ -60,6 +61,7 @@ public class Prediction {
         this.curricularUnits2ndSemGrade = curricularUnits2ndSemGrade;
         this.curricularUnits2ndWithoutEvaluations = curricularUnits2ndWithoutEvaluations;
         this.gdp = gdp;
+        this.predictRisk = predictRisk;
     }
 
     public int getMaritalStatus() {
@@ -252,5 +254,13 @@ public class Prediction {
 
     public void setGdp(double gdp) {
         this.gdp = gdp;
+    }
+
+    public double getPredictRisk() {
+        return predictRisk;
+    }
+
+    public void setPredictRisk(double predictRisk) {
+        this.predictRisk = predictRisk;
     }
 }

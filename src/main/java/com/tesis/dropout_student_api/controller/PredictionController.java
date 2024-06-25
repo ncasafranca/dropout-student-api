@@ -7,18 +7,16 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/prediction")
 @AllArgsConstructor
 public class PredictionController {
-    @Autowired
-    PredictionRepository predictionRepository;
+//    @Autowired
+//    PredictionRepository predictionRepository;
 
+    @CrossOrigin(origins = {"http://localhost:4200", "dropout-student-api.azurewebsites.net"})
     @PostMapping
     public ResponseEntity<Prediction> createPrediction
     (@RequestBody Prediction prediction) {
@@ -47,9 +45,10 @@ public class PredictionController {
                     prediction.getCurricularUnits2ndSemApproved(),
                     prediction.getCurricularUnits2ndSemGrade(),
                     prediction.getCurricularUnits2ndWithoutEvaluations(),
-                    prediction.getGdp()
+                    prediction.getGdp(),
+                    prediction.getPredictRisk()
             );
-            predictionRepository.save(newPrediction);
+//            predictionRepository.save(newPrediction);
             return new ResponseEntity<>(newPrediction,
                     HttpStatus.CREATED);
         } catch (Exception e) {
