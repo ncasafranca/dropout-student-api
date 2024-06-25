@@ -16,7 +16,7 @@ public class PredictionController {
     @Autowired
     PredictionRepository predictionRepository;
 
-    @CrossOrigin(origins = {"http://localhost:4200", "dropout-student-api.azurewebsites.net"})
+    @CrossOrigin(origins = {"http://localhost:4200", "https://dropout-student-api.azurewebsites.net"})
     @PostMapping
     public ResponseEntity<Prediction> createPrediction
     (@RequestBody Prediction prediction) {
