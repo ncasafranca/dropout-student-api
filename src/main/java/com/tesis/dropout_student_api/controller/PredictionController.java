@@ -9,6 +9,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = {
+        "http://localhost:4200",
+        "http://dropout-student-api.azurewebsites.net",
+        "https://dropout-student-api.azurewebsites.net"
+})
 @RestController
 @RequestMapping("/api/v1/prediction")
 @AllArgsConstructor
@@ -16,7 +21,7 @@ public class PredictionController {
     @Autowired
     PredictionRepository predictionRepository;
 
-    @CrossOrigin(origins = {"http://localhost:4200", "https://dropout-student-api.azurewebsites.net"})
+//    @CrossOrigin(origins = {"http://localhost:4200", "https://dropout-student-api.azurewebsites.net"})
     @PostMapping
     public ResponseEntity<Prediction> createPrediction
     (@RequestBody Prediction prediction) {
