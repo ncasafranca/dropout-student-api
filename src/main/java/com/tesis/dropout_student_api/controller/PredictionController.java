@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/prediction")
 @AllArgsConstructor
 public class PredictionController {
-//    @Autowired
-//    PredictionRepository predictionRepository;
+    @Autowired
+    PredictionRepository predictionRepository;
 
     @CrossOrigin(origins = {"http://localhost:4200", "dropout-student-api.azurewebsites.net"})
     @PostMapping
@@ -48,7 +48,7 @@ public class PredictionController {
                     prediction.getGdp(),
                     prediction.getPredictRisk()
             );
-//            predictionRepository.save(newPrediction);
+            predictionRepository.save(newPrediction);
             return new ResponseEntity<>(newPrediction,
                     HttpStatus.CREATED);
         } catch (Exception e) {
