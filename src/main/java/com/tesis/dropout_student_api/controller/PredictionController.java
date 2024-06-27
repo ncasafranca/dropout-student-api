@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = {
         "http://localhost:4200",
-        "http://dropout-student-api.azurewebsites.net",
-        "https://dropout-student-api.azurewebsites.net"
+        "https://dropout-student-fe.azurewebsites.net"
 })
 @RestController
 @RequestMapping("/api/v1/prediction")
