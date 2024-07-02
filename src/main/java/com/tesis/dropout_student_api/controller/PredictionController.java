@@ -20,12 +20,14 @@ public class PredictionController {
     @Autowired
     PredictionRepository predictionRepository;
 
-//    @CrossOrigin(origins = {"http://localhost:4200", "https://dropout-student-api.azurewebsites.net"})
     @PostMapping
     public ResponseEntity<Prediction> createPrediction
     (@RequestBody Prediction prediction) {
         try {
             Prediction newPrediction = new Prediction(
+                    prediction.getCodeStudent(),
+                    prediction.getFirstName(),
+                    prediction.getLastName(),
                     prediction.getMaritalStatus(),
                     prediction.getApplicationMode(),
                     prediction.getApplicationOrder(),
@@ -49,7 +51,6 @@ public class PredictionController {
                     prediction.getCurricularUnits2ndSemApproved(),
                     prediction.getCurricularUnits2ndSemGrade(),
                     prediction.getCurricularUnits2ndWithoutEvaluations(),
-                    prediction.getGdp(),
                     prediction.getPredictRisk()
             );
             predictionRepository.save(newPrediction);

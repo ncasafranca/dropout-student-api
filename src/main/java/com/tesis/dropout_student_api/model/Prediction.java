@@ -9,7 +9,9 @@ public class Prediction {
     @Id
     @GeneratedValue
     private String id;
-
+    private String codeStudent;
+    private String firstName;
+    private String lastName;
     private int maritalStatus;
     private int applicationMode;
     private int applicationOrder;
@@ -33,10 +35,12 @@ public class Prediction {
     private int curricularUnits2ndSemApproved;
     private double curricularUnits2ndSemGrade;
     private int curricularUnits2ndWithoutEvaluations;
-    private double gdp;
     private double predictRisk;
 
-    public Prediction(int maritalStatus, int applicationMode, int applicationOrder, int daytimeAttendance, int previousQualification, int mothersQualification, int mothersOccupation, int fathersOccupation, int displaced, int debtor, int tuition, int gender, int scholarshipHolder, int ageAtEnrollment, int curricularUnits1stSemEvaluations, double curricularUnits1stSemGrade, int curricularUnits1stSemWithoutEvaluations, int curricularUnits2ndSemCredited, int curricularUnits2ndSemEnrolled, int curricularUnits2ndSemEvaluations, int curricularUnits2ndSemApproved, double curricularUnits2ndSemGrade, int curricularUnits2ndWithoutEvaluations, double gdp, double predictRisk) {
+    public Prediction(String codeStudent, String firstName, String lastName, int maritalStatus, int applicationMode, int applicationOrder, int daytimeAttendance, int previousQualification, int mothersQualification, int mothersOccupation, int fathersOccupation, int displaced, int debtor, int tuition, int gender, int scholarshipHolder, int ageAtEnrollment, int curricularUnits1stSemEvaluations, double curricularUnits1stSemGrade, int curricularUnits1stSemWithoutEvaluations, int curricularUnits2ndSemCredited, int curricularUnits2ndSemEnrolled, int curricularUnits2ndSemEvaluations, int curricularUnits2ndSemApproved, double curricularUnits2ndSemGrade, int curricularUnits2ndWithoutEvaluations, double predictRisk) {
+        this.codeStudent = codeStudent;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.maritalStatus = maritalStatus;
         this.applicationMode = applicationMode;
         this.applicationOrder = applicationOrder;
@@ -60,7 +64,6 @@ public class Prediction {
         this.curricularUnits2ndSemApproved = curricularUnits2ndSemApproved;
         this.curricularUnits2ndSemGrade = curricularUnits2ndSemGrade;
         this.curricularUnits2ndWithoutEvaluations = curricularUnits2ndWithoutEvaluations;
-        this.gdp = gdp;
         this.predictRisk = predictRisk;
     }
 
@@ -248,12 +251,28 @@ public class Prediction {
         this.curricularUnits2ndWithoutEvaluations = curricularUnits2ndWithoutEvaluations;
     }
 
-    public double getGdp() {
-        return gdp;
+    public String getCodeStudent() {
+        return codeStudent;
     }
 
-    public void setGdp(double gdp) {
-        this.gdp = gdp;
+    public void setCodeStudent(String codeStudent) {
+        this.codeStudent = codeStudent;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public double getPredictRisk() {
