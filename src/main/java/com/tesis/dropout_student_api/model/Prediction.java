@@ -36,8 +36,9 @@ public class Prediction {
     private double curricularUnits2ndSemGrade;
     private int curricularUnits2ndWithoutEvaluations;
     private double predictRisk;
+    private long ts;
 
-    public Prediction(String codeStudent, String firstName, String lastName, int maritalStatus, int applicationMode, int applicationOrder, int daytimeAttendance, int previousQualification, int mothersQualification, int mothersOccupation, int fathersOccupation, int displaced, int debtor, int tuition, int gender, int scholarshipHolder, int ageAtEnrollment, int curricularUnits1stSemEvaluations, double curricularUnits1stSemGrade, int curricularUnits1stSemWithoutEvaluations, int curricularUnits2ndSemCredited, int curricularUnits2ndSemEnrolled, int curricularUnits2ndSemEvaluations, int curricularUnits2ndSemApproved, double curricularUnits2ndSemGrade, int curricularUnits2ndWithoutEvaluations, double predictRisk) {
+    public Prediction(String codeStudent, String firstName, String lastName, int maritalStatus, int applicationMode, int applicationOrder, int daytimeAttendance, int previousQualification, int mothersQualification, int mothersOccupation, int fathersOccupation, int displaced, int debtor, int tuition, int gender, int scholarshipHolder, int ageAtEnrollment, int curricularUnits1stSemEvaluations, double curricularUnits1stSemGrade, int curricularUnits1stSemWithoutEvaluations, int curricularUnits2ndSemCredited, int curricularUnits2ndSemEnrolled, int curricularUnits2ndSemEvaluations, int curricularUnits2ndSemApproved, double curricularUnits2ndSemGrade, int curricularUnits2ndWithoutEvaluations, double predictRisk, long ts) {
         this.codeStudent = codeStudent;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -65,6 +66,7 @@ public class Prediction {
         this.curricularUnits2ndSemGrade = curricularUnits2ndSemGrade;
         this.curricularUnits2ndWithoutEvaluations = curricularUnits2ndWithoutEvaluations;
         this.predictRisk = predictRisk;
+        this.ts = ts;
     }
 
     public int getMaritalStatus() {
@@ -281,5 +283,13 @@ public class Prediction {
 
     public void setPredictRisk(double predictRisk) {
         this.predictRisk = predictRisk;
+    }
+
+    public long getTs() {
+        return ts;
+    }
+
+    public void setTs(long ts) {
+        this.ts = ts;
     }
 }
