@@ -31,7 +31,7 @@ public class PredictionController {
     (@RequestBody Prediction prediction) {
         try {
             Instant instant = Instant.now();
-            long timeStampMillis = instant.toEpochMilli();
+            long timeStampMillis = instant.toEpochMilli()/1000;
 
             Prediction newPrediction = new Prediction(
                     prediction.getCodeStudent(),
