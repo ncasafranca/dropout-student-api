@@ -117,11 +117,14 @@ public class PredictionController {
     public ResponseEntity<List<PredictionQuantity>> getAllPredictionsByMonth(@PathVariable("id") String id) {
         try {
             List<Prediction> predictions = new ArrayList<Prediction>();
-            List<Prediction> predictionsFilter = new ArrayList<Prediction>();
             List<PredictionQuantity> predictionQuantities = new ArrayList<PredictionQuantity>();
 
             int qtyJanuary = 0, qtyFebruary = 0, qtyMarch = 0, qtyApril = 0, qtyMay = 0, qtyJune = 0, qtyJuly = 0, qtyAugust = 0,
                     qtySeptember = 0, qtyOctober = 0, qtyNovember = 0, qtyDecember = 0;
+
+            int qtyRiskJanuary = 0, qtyRiskFebruary = 0, qtyRiskMarch = 0, qtyRiskApril = 0, qtyRiskMay = 0, qtyRiskJune = 0,
+                    qtyRiskJuly = 0, qtyRiskAugust = 0, qtyRiskSeptember = 0, qtyRiskOctober = 0, qtyRiskNovember = 0,
+                    qtyRiskDecember = 0;
 
             predictionRepository.findAll().forEach(predictions::add);
 
@@ -135,7 +138,6 @@ public class PredictionController {
                 int month = date.getMonthValue();
 
                 if (date.getYear() == year) {
-                    predictionsFilter.add(prediction);
 
                     switch(month) {
                         case 1:
@@ -163,7 +165,36 @@ public class PredictionController {
                         case 12:
                             qtyDecember++; break;
                     }
+                }
 
+                if (date.getYear() == year && prediction.getPredictRisk() >= 0.5) {
+
+                    switch(month) {
+                        case 1:
+                            qtyRiskJanuary++; break;
+                        case 2:
+                            qtyRiskFebruary++; break;
+                        case 3:
+                            qtyRiskMarch++; break;
+                        case 4:
+                            qtyRiskApril++; break;
+                        case 5:
+                            qtyRiskMay++; break;
+                        case 6:
+                            qtyRiskJune++; break;
+                        case 7:
+                            qtyRiskJuly++; break;
+                        case 8:
+                            qtyRiskAugust++; break;
+                        case 9:
+                            qtyRiskSeptember++; break;
+                        case 10:
+                            qtyRiskOctober++; break;
+                        case 11:
+                            qtyRiskNovember++; break;
+                        case 12:
+                            qtyRiskDecember++; break;
+                    }
                 }
             }
 
@@ -173,29 +204,41 @@ public class PredictionController {
 
                 switch (i) {
                     case 1:
-                        predictionQuantity.setQuantity(qtyJanuary); break;
+                        predictionQuantity.setQuantity(qtyJanuary);
+                        predictionQuantity.setQuantityRisk(qtyRiskJanuary); break;
                     case 2:
-                        predictionQuantity.setQuantity(qtyFebruary); break;
+                        predictionQuantity.setQuantity(qtyFebruary);
+                        predictionQuantity.setQuantityRisk(qtyRiskFebruary); break;
                     case 3:
-                        predictionQuantity.setQuantity(qtyMarch); break;
+                        predictionQuantity.setQuantity(qtyMarch);
+                        predictionQuantity.setQuantityRisk(qtyRiskMarch); break;
                     case 4:
-                        predictionQuantity.setQuantity(qtyApril); break;
+                        predictionQuantity.setQuantity(qtyApril);
+                        predictionQuantity.setQuantityRisk(qtyRiskApril); break;
                     case 5:
-                        predictionQuantity.setQuantity(qtyMay); break;
+                        predictionQuantity.setQuantity(qtyMay);
+                        predictionQuantity.setQuantityRisk(qtyRiskMay); break;
                     case 6:
-                        predictionQuantity.setQuantity(qtyJune); break;
+                        predictionQuantity.setQuantity(qtyJune);
+                        predictionQuantity.setQuantityRisk(qtyRiskJune); break;
                     case 7:
-                        predictionQuantity.setQuantity(qtyJuly); break;
+                        predictionQuantity.setQuantity(qtyJuly);
+                        predictionQuantity.setQuantityRisk(qtyRiskJuly); break;
                     case 8:
-                        predictionQuantity.setQuantity(qtyAugust); break;
+                        predictionQuantity.setQuantity(qtyAugust);
+                        predictionQuantity.setQuantityRisk(qtyRiskAugust); break;
                     case 9:
-                        predictionQuantity.setQuantity(qtySeptember); break;
+                        predictionQuantity.setQuantity(qtySeptember);
+                        predictionQuantity.setQuantityRisk(qtyRiskSeptember); break;
                     case 10:
-                        predictionQuantity.setQuantity(qtyOctober); break;
+                        predictionQuantity.setQuantity(qtyOctober);
+                        predictionQuantity.setQuantityRisk(qtyRiskOctober); break;
                     case 11:
-                        predictionQuantity.setQuantity(qtyNovember); break;
+                        predictionQuantity.setQuantity(qtyNovember);
+                        predictionQuantity.setQuantityRisk(qtyRiskNovember); break;
                     case 12:
-                        predictionQuantity.setQuantity(qtyDecember); break;
+                        predictionQuantity.setQuantity(qtyDecember);
+                        predictionQuantity.setQuantityRisk(qtyRiskDecember); break;
                 }
 
                 predictionQuantities.add(predictionQuantity);
