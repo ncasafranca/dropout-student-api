@@ -2,9 +2,11 @@ package com.tesis.dropout_student_api.controller;
 
 import com.tesis.dropout_student_api.exception.UnKnownException;
 import com.tesis.dropout_student_api.model.Prediction;
+import com.tesis.dropout_student_api.model.PredictionBulk;
 import com.tesis.dropout_student_api.model.PredictionQuantity;
 import com.tesis.dropout_student_api.repository.PredictionRepository;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,7 @@ import java.util.*;
 @RestController
 @RequestMapping("/api/v1/prediction")
 @AllArgsConstructor
+@NoArgsConstructor
 public class PredictionController {
     @Autowired
     PredictionRepository predictionRepository;
@@ -66,6 +69,30 @@ public class PredictionController {
             predictionRepository.save(newPrediction);
             return new ResponseEntity<>(newPrediction,
                     HttpStatus.CREATED);
+        } catch (Exception e) {
+            throw new UnKnownException(e.getMessage());
+        }
+    }
+
+    // Prediction bulk
+
+    @PostMapping("/bulk")
+    public ResponseEntity<List<Prediction>> createPredictionBulk
+            (@RequestBody PredictionBulk predictionBulk) {
+        try {
+            Instant instant = Instant.now();
+            long timeStampMillis = instant.toEpochMilli()/1000;
+
+            List<Prediction> predictions = new ArrayList<Prediction>();
+
+            for (Prediction prediction: predictionBulk.getData()) {
+                prediction.setTs(timeStampMillis);
+                predictions.add(prediction);
+                predictionRepository.save(prediction);
+            }
+
+            return new ResponseEntity<>
+                    (predictions, HttpStatus.CREATED);
         } catch (Exception e) {
             throw new UnKnownException(e.getMessage());
         }
